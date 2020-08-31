@@ -23,7 +23,7 @@ services:
     robot:
         container_name: robot-tuk
         image: psagrera/jrobot:TUK
-        stdin: true
+        stdin_open: true
         tty: true
         networks:
             - tuk
