@@ -1,7 +1,7 @@
 version: '3.1'
 services:
     jenkins:
-        container_name: jenkins
+        container_name: jenkins-tuk
         ports:
             - '8080:8080'
             - '50000:50000'
@@ -10,7 +10,7 @@ services:
             - tuk
         privileged: true
     jenkins-slave:
-        container_name: jenkins-slave
+        container_name: jenkins-slave-tuk
         #restart: always
         environment:
             - 'JENKINS_URL=http://jenkins:8080'
@@ -21,7 +21,7 @@ services:
         networks:
             - tuk
     robot:
-        container_name: robot
+        container_name: robot-tuk
         image: psagrera/jrobot:TUK
         stdin: true
         tty: true
