@@ -23,7 +23,7 @@ services:
     robot:
         container_name: robot
         image: psagrera/jrobot
-        stdin: true
+        stdin_open: true
         tty: true
         networks:
             - testing
