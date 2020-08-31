@@ -7,7 +7,7 @@ services:
             - '50000:50000'
         image: psagrera/jenkins_master
         networks:
-            - testing
+            - tuk
         privileged: true
     jenkins-slave:
         container_name: jenkins-slave
@@ -19,17 +19,17 @@ services:
             - /var/run/docker.sock:/var/run/docker.sock  # Expose the docker daemon in the container
             - $PWD/jenkins-docker/slave/jenkins_home:/home/jenkins # Avoid mysql volume mount issue
         networks:
-            - testing
+            - tuk
     robot:
         container_name: robot
-        image: psagrera/jrobot
+        image: psagrera/jrobot:TUK
         stdin: true
         tty: true
         networks:
-            - testing
+            - tuk
 
 networks:
-    testing:
+    tuk:
         external: true
 
 
