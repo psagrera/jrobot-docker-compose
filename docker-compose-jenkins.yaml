@@ -5,24 +5,19 @@ services:
         ports:
             - '8080:8080'
             - '50000:50000'
-        image: psagrera/jenkins_master
+        image: psagrera/jenkins_master:lts
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - $PWD/jenkins/jenkins_home:/var/jenkins_home
         networks:
             - testing
         privileged: true
-    jenkins-slave:
-        container_name: jenkins-slave
-        #restart: always
-        environment:
-            - 'JENKINS_URL=http://jenkins:8080'
-        image: psagrera/jenkins_slave
-        volumes:
-            - /var/run/docker.sock:/var/run/docker.sock  # Expose the docker daemon in the container
-            - $PWD/jenkins-docker/slave/jenkins_home:/home/jenkins # Avoid mysql volume mount issue
-        networks:
-            - testing
     robot:
         container_name: robot
         image: psagrera/jrobot
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - $PWD/jenkins/jenkins_home:/var/jenkins_home
         stdin_open: true
         tty: true
         networks:
