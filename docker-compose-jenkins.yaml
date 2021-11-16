@@ -5,7 +5,7 @@ services:
         ports:
             - '8080:8080'
             - '50000:50000'
-        image: psagrera/jenkins_master:lts
+        image: psagrera/jenkins_master:latest
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
             - $PWD/jenkins/jenkins_home:/var/jenkins_home
