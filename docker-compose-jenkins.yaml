@@ -14,7 +14,7 @@ services:
         privileged: true
     robot:
         container_name: robot
-        image: psagrera/jrobot
+        image: psagrera/vixia
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
             - $PWD/jenkins/jenkins_home:/var/jenkins_home
